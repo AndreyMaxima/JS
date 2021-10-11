@@ -1,0 +1,20 @@
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    width: 400px;
+    justify-content: space-between;
+    background-color: darkcyan;
+}
+
+label {
+    background-color: coral;
+}
+
+div {
+    background-color: black;
+}
+
+.colored {
+    color: darkcyan;
+}
