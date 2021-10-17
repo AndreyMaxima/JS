@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="index.js" defer></script>
+    <meta charset="UTF-8">
+    <title>Занятие 10.</title>
+</head>
+<body>
+<div id="loader">
+    <div id="loader-box"></div>
+</div>
+<button id="stop">стоп</button>
+<input type="file" id="fileInput">
+<button id="uploadButton">Отправить</button>
+<div class='gallery'></div>
+</body>
+<style>
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .gallery img {
+        width: 30%
+    }
+
+    #loader {
+        height: 30px;
+        position: relative;
+    }
+    #loader-box {
+        position: relative;
+        width: 10px;
+        height: 10px;
+        background-color: coral;
+    }
+</style>
+</html>
