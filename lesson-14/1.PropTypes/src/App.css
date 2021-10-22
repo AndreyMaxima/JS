@@ -1,0 +1,12 @@
+.body {
+  display: flex;
+  padding: 10px;
+}
+.sidebar-container {
+  width: 200px;
+}
+
+.content {
+  flex-grow: 1;
+  padding-left: 10px;
+}
