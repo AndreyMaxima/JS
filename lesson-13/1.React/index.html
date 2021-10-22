@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Занятие 13. React</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+<div id="first-place">
+    Что-то отличное
+    <div class="container" id="first-container">
+    </div>
+</div>
+<div id="second-place">
+    <div class="container" id="second-container">
+    </div>
+    И какой-то другой контент
+</div>
+<div id="third-place">
+    И тут тоже что-то другое, а правее опять
+    <div class="container" id="third-container"></div>
+</div>
+<!-- Загрузим React. -->
+<!-- Примечание: при деплое на продакшен замените «development.js» на «production.min.js». -->
+<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+<!-- возможность использовать JSX -->
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="Repeatable.js" type="text/babel"></script>
+</body>
+</html>

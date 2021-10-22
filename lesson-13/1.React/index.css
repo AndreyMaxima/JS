@@ -1,0 +1,35 @@
+body {
+    width: 100%;
+    text-align: center;
+}
+
+.container {
+    display: inline-block;
+}
+
+.repeatable {
+    width: 100px;
+    display: inline-block;
+}
+
+.repeatable__first-row {
+    background-color: darkcyan;
+}
+
+.repeatable__second-row {
+    background-color: coral;
+}
+
+.repeatable__third-row {
+    color: white;
+    background-color: darkblue;
+}
+
+.repeatable__fourth-row {
+    background-color: cadetblue;
+}
+
+.repeatable__fifth-row {
+    color: white;
+    background-color: black;
+}
