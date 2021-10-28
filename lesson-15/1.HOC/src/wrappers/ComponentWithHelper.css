@@ -1,0 +1,11 @@
+.component-with-helper {
+    position: relative;
+}
+
+.component-with-helper__helper {
+    position: absolute;
+    top: -1.5em;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+}

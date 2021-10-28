@@ -4,11 +4,14 @@ import { apiResponse } from '../../api-mock/api';
 import Comment from '../../components/Comment/Comment';
 import { CommentResponse, CommentType } from '../../types/responses';
 import LikeCounter from '../../components/LikeCounter/LikeCounter';
+import withHelper from '../../wrappers/withHelper';
 
 interface State {
   commentsResponse: CommentResponse;
   countOfLikes: number;
 }
+
+const CommentWidthHelper = withHelper(Comment, 'Это комментарий');
 
 export default class Comments extends React.Component<{}, State> {
   constructor(props: {}) {
@@ -31,7 +34,7 @@ export default class Comments extends React.Component<{}, State> {
       <div className="comments-form">
         {this.state.commentsResponse.status === 'ok'
           ? this.state.commentsResponse.result.map((elem: CommentType, index: number) => (
-            <Comment
+            <CommentWidthHelper
               name={elem.name}
               text={elem.text}
               addLike={this.addLike}
