@@ -1,0 +1,74 @@
+{
+  "name": "2.create-react-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "@types/prop-types": "^15.7.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eslint": "eslint ./src",
+    "eslint:fix": "eslint ./src --fix",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb",
+      "airbnb-typescript"
+    ],
+    "plugins": [
+      "@typescript-eslint/eslint-plugin"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "rules": {
+      "jsx-a11y/mouse-events-have-key-events": "off",
+      "react/prefer-stateless-function": "off",
+      "react/no-array-index-key": "off",
+      "react/destructuring-assignment": "off",
+      "import/prefer-default-export": "off",
+      "@typescript-eslint/no-useless-constructor": "off",
+      "jsx-a11y/click-events-have-key-events": "off",
+      "jsx-a11y/no-static-element-interactions": "off",
+      "react/no-access-state-in-setstate": "off",
+      "@typescript-eslint/no-unused-expressions": "off",
+      "max-len": [
+        1,
+        120
+      ]
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.31",
+    "@types/react-dom": "^17.0.10",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-typescript": "^14.0.1",
+    "prop-types": "^15.7.2",
+    "typescript": "^4.4.4"
+  }
+}

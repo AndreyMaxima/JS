@@ -1,0 +1,8 @@
+.comments-form__comments>*{
+    margin-bottom: 5px;
+}
+
+.comment_dark {
+    background-color: #282c34;
+    color: white;
+}
