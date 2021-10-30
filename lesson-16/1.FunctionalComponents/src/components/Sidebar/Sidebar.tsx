@@ -1,11 +1,11 @@
 import React from 'react';
 import './Sidebar.css';
-import { ThemeContextConsumer, ThemeContextState } from '../../contexts/ThemeContext';
+import { ThemeContext, ThemeContextState } from '../../contexts/ThemeContext';
 
 export class Sidebar extends React.Component {
   render() {
     return (
-      <ThemeContextConsumer>
+      <ThemeContext.Consumer>
         {
           (context: Partial<ThemeContextState>) => (
             <div className={`sidebar ${context.darkTheme && 'sidebar_dark'}`}>
@@ -17,7 +17,7 @@ export class Sidebar extends React.Component {
             </div>
           )
         }
-      </ThemeContextConsumer>
+      </ThemeContext.Consumer>
     );
   }
 }

@@ -1,97 +1,97 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Comments.css';
 import Comment from '../../components/Comment/Comment';
 import { CommentType } from '../../types/dumMyApiResponses';
 import Post from '../../components/Post/Post';
 import { getCommentsList } from '../../api/dumMyApi';
-import { ThemeContextConsumer, ThemeContextState } from '../../contexts/ThemeContext';
+import { ThemeContext, ThemeContextState } from '../../contexts/ThemeContext';
 import { EMPTY_STRING } from '../../constants/common';
 import { getFishText } from '../../api/fishText';
 import ComponentWithHelper from '../../wrappers/ComponentWithHelper';
 
-interface State {
-  comments: Array<CommentType>;
-  commentsLoaded: boolean;
-  post: string;
-  countOfLikes: number;
-  showComments: boolean;
-}
+const Comments = () => {
+  const [comments, setComments] = useState([] as Array<CommentType>);
+  const [post, setPost] = useState(EMPTY_STRING);
+  const [commentsLoaded, setCommentsLoaded] = useState(false);
+  const [showComments, setShowComments] = useState(false);
 
-const initialState = {
-  comments: [],
-  post: EMPTY_STRING,
-  commentsLoaded: false,
-  countOfLikes: 0,
-  showComments: true,
-};
-
-export default class Comments extends React.Component<{}, State> {
-  constructor(props: {}) {
-    super(props);
-    this.state = initialState;
-    this.handleShowCommentButton = this.handleShowCommentButton.bind(this);
-    this.loadComments = this.loadComments.bind(this);
-    this.loadPost = this.loadPost.bind(this);
-  }
-
-  componentDidMount(): void {
-    this.loadComments(0, 10);
-    this.loadPost();
-  }
-
-  handleShowCommentButton() {
-    this.setState({ showComments: !this.state.showComments });
-  }
-
-  loadComments(page: number, limit: number) {
+  const loadComments = (page: number, limit: number) => {
     getCommentsList(
       page,
       limit,
-      (resp: Array<CommentType>) => this.setState({ comments: resp, commentsLoaded: true }),
-      () => this.setState({ commentsLoaded: true }),
+      (resp: Array<CommentType>) => {
+        setComments(resp);
+        setCommentsLoaded(true);
+      },
+      () => setCommentsLoaded(true),
     );
-  }
+  };
 
-  loadPost() {
-    getFishText((post) => this.setState({ post }));
-  }
+  const loadPost = () => {
+    getFishText(setPost);
+  };
 
-  render() {
-    return (
-      <ThemeContextConsumer>
-        {
-          (context: Partial<ThemeContextState>) => (
-            <div className="comments-form">
-              <ComponentWithHelper comment="Рандомный текст">
-                <div className="comments-form__post">
-                  <Post text={this.state.post} />
-                </div>
-              </ComponentWithHelper>
-              <button
-                type="button"
-                className="comments-form__show-comment-button"
-                onClick={this.handleShowCommentButton}
-              >
-                {this.state.showComments ? 'Скрыть комментарии' : 'Показать комментарии'}
-              </button>
-              {this.state.showComments && (this.state.commentsLoaded ? (
-                <div className="comments-form__comments">
-                  {this.state.comments.length !== 0
-                    ? this.state.comments.map((elem: CommentType, index: number) => (
-                      <Comment
-                        key={index}
-                        name={elem.owner?.firstName}
-                        text={elem.message}
-                        className={context.darkTheme ? 'comment_dark' : ''}
-                      />
-                    ))
-                    : 'Комеентарии не найдены или при загрузке произошла ошибка'}
-                </div>
-              ) : 'Идёт загрузка')}
-            </div>
-          )
-        }
-      </ThemeContextConsumer>
-    );
-  }
-}
+  // useEffect(() => { // Похож на componentDidMount, componentDidUpdate
+  //   loadComments(0, 10);
+  //   loadPost();
+  // });
+
+  // useLayoutEffect(() => console.log('any), [value1, value2]) // То же что и seEffect, только запускается стинхронно
+
+  useEffect(() => { // Похож на componentDidMount
+    loadComments(0, 10);
+    loadPost();
+    return () => console.log('Форма размонтирована'); // Будет выполнено, по аналогии с componentWillUnmount
+  }, []);
+
+  useEffect(() => { // Выполнится при изменении значений, переданных, как элемент массива, во втором параметре
+    console.log(showComments ? 'Комментарии показаны' : 'Комментарии скрыты');
+  }, [showComments]);
+
+  useEffect(() => {
+    console.log('comments или commentsLoaded изменил значение');
+  }, [comments, commentsLoaded]);
+
+  const handleShowCommentButton = () => {
+    setShowComments(!showComments);
+  };
+  return (
+    <ThemeContext.Consumer>
+      {
+        (context: Partial<ThemeContextState>) => (
+          <div className="comments-form">
+            <ComponentWithHelper comment="Рандомный текст">
+              <div className="comments-form__post">
+                <Post text={post} />
+              </div>
+            </ComponentWithHelper>
+            <button
+              type="button"
+              className="comments-form__show-comment-button"
+              onClick={handleShowCommentButton}
+            >
+              {showComments ? 'Скрыть комментарии' : 'Показать комментарии'}
+            </button>
+            {showComments && (commentsLoaded ? (
+              <div className="comments-form__comments">
+                {comments.length !== 0
+                  ? comments.map((elem: CommentType, index: number) => (
+                    <Comment
+                      key={index}
+                      commentIndex={index}
+                      name={elem.owner?.firstName}
+                      text={elem.message}
+                      className={context.darkTheme ? 'comment_dark' : ''}
+                    />
+                  ))
+                  : 'Комеентарии не найдены или при загрузке произошла ошибка'}
+              </div>
+            ) : 'Идёт загрузка')}
+          </div>
+        )
+      }
+    </ThemeContext.Consumer>
+  );
+};
+
+export default Comments;

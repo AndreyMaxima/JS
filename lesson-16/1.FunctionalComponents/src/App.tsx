@@ -3,13 +3,17 @@ import './App.css';
 import { Header } from './components/Header/Header';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import Comments from './forms/Comments/Comments';
-import { ThemeContextConsumer, ThemeContextProvider, ThemeContextState } from './contexts/ThemeContext';
+import {
+  ThemeContext,
+  ThemeContextProvider,
+  ThemeContextState,
+} from './contexts/ThemeContext';
 
 class App extends React.Component {
   render() {
     return (
       <ThemeContextProvider>
-        <ThemeContextConsumer>
+        <ThemeContext.Consumer>
           {
             (context: Partial<ThemeContextState>) => (
               <div className={`App ${context.darkTheme && 'app__dark'}`}>
@@ -25,7 +29,7 @@ class App extends React.Component {
               </div>
             )
           }
-        </ThemeContextConsumer>
+        </ThemeContext.Consumer>
       </ThemeContextProvider>
     );
   }

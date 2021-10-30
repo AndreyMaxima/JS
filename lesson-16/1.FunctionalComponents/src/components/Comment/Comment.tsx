@@ -1,49 +1,52 @@
-import React, { RefObject } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Comment.css';
 import LikeButton from '../LikeButton/LikeButton';
+import { EMPTY_STRING } from '../../constants/common';
 
 interface Props {
   name?: string;
   text?: string;
-  addLike?: () => void;
-  removeLike?: () => void;
   className?: string;
+  commentIndex?: number;
 }
 
-interface State {
-  liked: boolean
-}
+const Comment = ({
+  name,
+  text,
+  className,
+  commentIndex,
+}: Props) => {
+  useEffect(() => {
+    console.log(`Комментарий ${commentIndex} отображён`);
+    return () => console.log(`Комментарий ${commentIndex} скрыт`); // Будет выполнено, по аналогии с componentWillUnmount
+  }, []);
 
-export default class Comment extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.handleLike = this.handleLike.bind(this);
-    this.state = { liked: false };
-    this.textDiv = React.createRef();
-  }
+  const [liked, setLiked] = useState(false);
 
-  handleLike() {
-    this.setState({
-      liked: !this.state.liked,
-    });
-  }
+  const handleLike = () => {
+    setLiked(!liked);
+  };
 
-  textDiv: RefObject<HTMLDivElement>;
-
-  render() {
-    return (
-      <div className={`comment ${this.props.className}`}>
-        <div className="comment__user-name">{this.props.name || 'Незнакомец'}</div>
-        <div
-          ref={this.textDiv}
-          className={`comment__text ${this.state.liked && 'text-liked'}`}
-        >
-          {this.props.text || '-'}
-        </div>
-        <div className="comment__like">
-          <LikeButton liked={this.state.liked} setLiked={this.handleLike} />
-        </div>
+  return (
+    <div className={`comment ${className}`}>
+      <div className="comment__user-name">{name}</div>
+      <div
+        className={`comment__text ${liked && 'text-liked'}`}
+      >
+        {text || '-'}
       </div>
-    );
-  }
-}
+      <div className="comment__like">
+        <LikeButton liked={liked} setLiked={handleLike} />
+      </div>
+    </div>
+  );
+};
+
+Comment.defaultProps = {
+  name: 'Незнакомец',
+  text: '-',
+  className: EMPTY_STRING,
+  commentIndex: -1,
+};
+
+export default Comment;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Post.css';
 import LikeButton from '../LikeButton/LikeButton';
 
@@ -6,33 +6,18 @@ interface Props {
   text: string;
 }
 
-interface State {
-  liked: boolean;
-}
-
-export default class Post extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = { liked: false };
-    this.handleLike = this.handleLike.bind(this);
-  }
-
-  handleLike() {
-    this.setState({
-      liked: !this.state.liked,
-    });
-  }
-
-  render() {
-    return (
-      <div className="post">
-        <div className="post__text">
-          {this.props.text}
-        </div>
-        <div className="post__like">
-          <LikeButton setLiked={this.handleLike} liked={this.state.liked} />
-        </div>
+const Post = ({ text }: Props) => {
+  const [liked, setLiked] = useState(false); // Создаёт поле стейта liked со значением false и метод setLiked, менящий значение поля стэйта liked
+  return (
+    <div className="post">
+      <div className="post__text">
+        {text}
       </div>
-    );
-  }
-}
+      <div className="post__like">
+        <LikeButton setLiked={setLiked} liked={liked} />
+      </div>
+    </div>
+  );
+};
+
+export default Post;

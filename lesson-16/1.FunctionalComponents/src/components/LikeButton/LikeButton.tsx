@@ -6,21 +6,16 @@ interface Props {
   liked: boolean;
 }
 
-export default class LikeButton extends React.Component<Props, any> {
-  constructor(props: Props) {
-    super(props);
-    this.handleLike = this.handleLike.bind(this);
-  }
+const LikeButton = ({ setLiked, liked }: Props) => {
+  const handleLike = () => {
+    setLiked(!liked);
+  };
 
-  handleLike() {
-    this.props.setLiked(!this.props.liked);
-  }
+  return (
+    <div className="like-button" onClick={handleLike}>
+      {liked ? 'Лайкнуто' : 'Не лайкнуто'}
+    </div>
+  );
+};
 
-  render() {
-    return (
-      <div className="like-button" onClick={this.handleLike}>
-        {this.props.liked ? 'Лайкнуто' : 'Не лайкнуто'}
-      </div>
-    );
-  }
-}
+export default LikeButton;

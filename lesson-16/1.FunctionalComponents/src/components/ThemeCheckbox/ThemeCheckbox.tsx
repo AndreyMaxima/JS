@@ -1,26 +1,21 @@
-import React, { ChangeEvent } from 'react';
-import { ThemeContextConsumer, ThemeContextState } from '../../contexts/ThemeContext';
+import React, { ChangeEvent, useContext } from 'react';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
-export class ThemeCheckbox extends React.Component {
-  render(): React.ReactNode {
-    return (
-      <ThemeContextConsumer>
-        {
-          (context: Partial<ThemeContextState>) => (
-            <div className="theme-checkbox">
-              Тёмная тема
-              <input
-                className="theme-checkbox__input"
-                checked={context.darkTheme}
-                type="checkbox"
-                onChange={
-                  (e: ChangeEvent<HTMLInputElement>) => context.toggleTheme && context.toggleTheme(e.target.checked)
-                }
-              />
-            </div>
-          )
+const ThemeCheckbox = () => {
+  const themeContext = useContext(ThemeContext);
+  return (
+    <div className="theme-checkbox">
+      Тёмная тема
+      <input
+        className="theme-checkbox__input"
+        checked={themeContext.darkTheme}
+        type="checkbox"
+        onChange={
+          (e: ChangeEvent<HTMLInputElement>) => themeContext.toggleTheme && themeContext.toggleTheme(e.target.checked)
         }
-      </ThemeContextConsumer>
-    );
-  }
-}
+      />
+    </div>
+  );
+};
+
+export default ThemeCheckbox;
