@@ -8,12 +8,16 @@ import { ThemeContext, ThemeContextState } from '../../contexts/ThemeContext';
 import { EMPTY_STRING } from '../../constants/common';
 import { getFishText } from '../../api/fishText';
 import ComponentWithHelper from '../../wrappers/ComponentWithHelper';
+import useOnceOnMount from '../../hooks/useOnceOnMount';
+import useCount from '../../hooks/useCounter';
 
 const Comments = () => {
   const [comments, setComments] = useState([] as Array<CommentType>);
   const [post, setPost] = useState(EMPTY_STRING);
   const [commentsLoaded, setCommentsLoaded] = useState(false);
   const [showComments, setShowComments] = useState(false);
+  const [ commentClickCounter, addCommentClickCounter ] = useCount(0);
+  const [ postClickCounter, addPostClickCounter ] = useCount(0);
 
   const loadComments = (page: number, limit: number) => {
     getCommentsList(
@@ -38,11 +42,17 @@ const Comments = () => {
 
   // useLayoutEffect(() => console.log('any), [value1, value2]) // То же что и seEffect, только запускается стинхронно
 
-  useEffect(() => { // Похож на componentDidMount
+  // useEffect(() => { // Похож на componentDidMount
+  //   loadComments(0, 10);
+  //   loadPost();
+  //   return () => console.log('Форма размонтирована'); // Будет выполнено, по аналогии с componentWillUnmount
+  // }, []);
+
+  useOnceOnMount(() => {
     loadComments(0, 10);
     loadPost();
-    return () => console.log('Форма размонтирована'); // Будет выполнено, по аналогии с componentWillUnmount
-  }, []);
+    console.log('Я хук, заменяющий componentDidMount через useEffect');
+  });
 
   useEffect(() => { // Выполнится при изменении значений, переданных, как элемент массива, во втором параметре
     console.log(showComments ? 'Комментарии показаны' : 'Комментарии скрыты');
@@ -54,17 +64,19 @@ const Comments = () => {
 
   const handleShowCommentButton = () => {
     setShowComments(!showComments);
+    addCommentClickCounter();
   };
   return (
     <ThemeContext.Consumer>
       {
         (context: Partial<ThemeContextState>) => (
           <div className="comments-form">
-            <ComponentWithHelper comment="Рандомный текст">
-              <div className="comments-form__post">
+            <ComponentWithHelper comment={`Рандомный текст, по которому кликнули ${postClickCounter} раз`}>
+              <div className="comments-form__post" onClick={addPostClickCounter}>
                 <Post text={post} />
               </div>
             </ComponentWithHelper>
+            {`На кнопку ниже нажали ${commentClickCounter} раз`}
             <button
               type="button"
               className="comments-form__show-comment-button"
