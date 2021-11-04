@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Занятие 18. Пользовательские элементы</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="CustomElement.js" defer></script>
+    <script src="ExtendsButton.js" defer></script>
+</head>
+<body>
+<!--Old VDOM-->
+<ul>
+    <li key="0">1</li>
+    <li key="1">2</li>
+    <li key="2">3</li>
+    <li key="3">4</li>
+</ul>
+<!--New VDOM-->
+<ul>
+    <li key="0">1</li>
+    <li key="1">2</li>
+    <li key="2">0</li>
+    <li key="3">3</li>
+    <li key="4">4</li>
+</ul>
+<!--DOM-->
+<ul>
+    <li>0</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+</body>
+</html>
