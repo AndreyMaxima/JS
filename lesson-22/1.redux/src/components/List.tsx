@@ -1,28 +1,48 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { State } from '../types/state';
+import { bindActionCreators, Dispatch } from 'redux';
+import { CommonState } from '../types/commonState';
+import { addRecordAction } from '../actions/ListActions';
 
 interface Props {
   records: Array<string>;
-  addCallback: (text: string) => void;
+  addRecord: (newRecord: string) => void
+  // dispatch: Dispatch // Этот пропс мы получим автоматически через HOC, возвращаемый функцией connect
 }
 
-const List = ({ records, addCallback }: Props) => {
+const List = ({
+  records,
+  addRecord,
+  // dispatch,
+}: Props) => {
   const [inputText, setInputText] = useState('');
+  const handleAddRecord = () => {
+    // dispatch({ // Отправляем экшн в редбюсер
+    //   type: 'LIST/ADD_RECORD',
+    //   payload: 'new record',
+    // });
+
+    // dispatch(addRecord(inputText)); // Отправка экшена через dispatch
+    addRecord(inputText);
+    setInputText('');
+  };
   return (
     <div id="app">
-      <input type="text" onChange={(e) => setInputText(e.target.value)} />
-      <button type="button" onClick={() => addCallback(inputText)}>Добавить</button>
+      <input type="text" value={inputText} onChange={(e) => setInputText(e.target.value)} />
+      <button type="button" onClick={handleAddRecord}>Добавить</button>
       {records.map((text, index) => <div key={index}>{text}</div>)}
     </div>
   );
 };
 
-const mapStateToProps = (state: State) => ({
-  records: state.records,
+const mapStateToProps = (state: CommonState) => ({ // Функция принимает стэйт и возвращает объект пропсов
+  records: state.list.records, // Пропс records
+});
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  addRecord: bindActionCreators(addRecordAction, dispatch),
 });
 
-// const connectHOC = connect(mapStateToProps);
-// export default connectHOC(List);
+// const connectHOC = connect(mapStateToProps); // Создание компонента высшего порядка, для обёртки нашего компонента
+// export default connectHOC(List); // Обёртования нашего компонента в подключенный к стору компонент
 
-export default connect(mapStateToProps)(List);
+export default connect(mapStateToProps, mapDispatchToProps)(List);

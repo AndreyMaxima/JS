@@ -1,16 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import List from './components/List';
 
-const App = () => {
-  const [records, setRecords] = useState([] as Array<string>);
-  const handleAddRcord = (text: string) => {
-    setRecords([...records, text]);
-  };
-  return (
-    <List
-      records={records}
-      addCallback={handleAddRcord}
-    />
-  );
-};
+const App = () => (
+  <List />
+);
 export default App;

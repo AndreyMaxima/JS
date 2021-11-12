@@ -7,7 +7,7 @@ import store from './store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={store /* Оборачивание приложения в провайдер стора */}>
       <App />
     </Provider>
   </React.StrictMode>,
