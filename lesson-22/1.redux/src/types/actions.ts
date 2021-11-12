@@ -1,8 +1,7 @@
-export interface Action<T> {
+export interface Action {
   type: string
-  payload: T
 }
 
-export interface ListActionPayload {
-  newRecord: string
+export interface ListActionType extends Action{
+  newRecord?: string
 }

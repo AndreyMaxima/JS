@@ -1,16 +1,37 @@
-import { Action, ListActionPayload } from '../types/actions';
-import { ListState } from '../types/commonState';
-import {ADD_RECORD} from "../constants/actions/list";
+import Immutable from 'immutable';
+import { ListActionType } from '../types/actions';
+import { ADD_RECORD } from '../constants/actions/list';
 
-const initialState: ListState = {
+const initialState: any = Immutable.Map({
   records: ['First record', 'Second record'],
-};
+});
 
-function listReducer(state = initialState, action: Action<ListActionPayload>) { // Reducer - функция, принимающая текущий стейт, возвраящуя новый (с новой ссылкой)
+// ------------------------С использованием встроенных инструментов иммутабельности----------------
+// const initialState: ListState = Immutable.Map({
+//   records: ['First record', 'Second record'],
+// });
+// const addRecords = (state: ListState, newRecord?: string) => (newRecord ? {
+//   ...state,
+//   list: [...state.records, newRecord],
+// } : state);
+//
+// function listReducer(state = initialState, action: ListActionType) { // Reducer - функция, принимающая текущий стейт, возвраящуя новый (с новой ссылкой)
+//   switch (action.type) {
+//     case ADD_RECORD:
+//       return addRecords(state, action.newRecord);
+//     default:
+//       return state;
+//   }
+// }
+
+// ------------------------С использованием Immutable.js----------------
+function listReducer(state = initialState, action: ListActionType) { // Reducer - функция, принимающая текущий стейт, возвраящуя новый (с новой ссылкой)
   switch (action.type) {
-    case ADD_RECORD: state.records.push(action.payload.newRecord);
+    case ADD_RECORD:
+      return addRecords(state, action.newRecord);
+    default:
+      return state;
   }
-  return state;
 }
 
 export default listReducer;
