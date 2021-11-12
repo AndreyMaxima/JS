@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { CommonState } from '../types/commonState';
+// import { CommonState } from '../types/commonState';
 import { addRecordAction } from '../actions/ListActions';
 
 interface Props {
@@ -35,8 +35,9 @@ const List = ({
   );
 };
 
-const mapStateToProps = (state: CommonState) => ({ // Функция принимает стэйт и возвращает объект пропсов
-  records: state.list.records, // Пропс records
+const mapStateToProps = (state: any) => ({ // Функция принимает стэйт и возвращает объект пропсов
+  // records: state.list.get('records').toJS(), // Пропс records (маппинг с использованием immutable.js)
+  records: state.list.records,
 });
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   addRecord: bindActionCreators(addRecordAction, dispatch),

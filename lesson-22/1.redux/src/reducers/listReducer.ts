@@ -2,7 +2,7 @@ import Immutable from 'immutable';
 import { ListActionType } from '../types/actions';
 import { ADD_RECORD } from '../constants/actions/list';
 
-const initialState: any = Immutable.Map({
+const initialState: any = Immutable.fromJS({
   records: ['First record', 'Second record'],
 });
 
@@ -25,6 +25,23 @@ const initialState: any = Immutable.Map({
 // }
 
 // ------------------------С использованием Immutable.js----------------
+function listReducer(state = initialState, action: ListActionType) { // Reducer - функция, принимающая текущий стейт, возвраящуя новый (с новой ссылкой)
+  switch (action.type) {
+    case ADD_RECORD:
+      return state.updateIn(['records'], (records: any) => records.push(action.newRecord));
+    default:
+      return state;
+  }
+}
+
+const initialState: ListState = Immutable.Map({
+  records: ['First record', 'Second record'],
+});
+const addRecords = (state: ListState, newRecord?: string) => (newRecord ? {
+  ...state,
+  list: [...state.records, newRecord],
+} : state);
+
 function listReducer(state = initialState, action: ListActionType) { // Reducer - функция, принимающая текущий стейт, возвраящуя новый (с новой ссылкой)
   switch (action.type) {
     case ADD_RECORD:
