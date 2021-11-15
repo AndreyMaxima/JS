@@ -1,25 +1,27 @@
-import { combineReducers, createStore } from 'redux';
-import listReducer from './reducers/listReducer';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import comments from './reducers/commentsReduces';
+import commentsWatcher from './saga/comments';
 
-const store = createStore( // Создание и экспорт Store (принимает reducer)
-  combineReducers( // Функция для объединения нескольких редьюсеров в один
+const middleware = (store: any) => (next: any) => (action: any) => { // Пример прослойки логгирования
+  console.group(`${action.type} log`);
+  console.log(action);
+  console.log(store);
+  console.groupEnd();
+  next(action);
+};
+
+const sagaMiddleware = createSagaMiddleware(); // Создание прослойки saga
+
+const store = createStore(
+  combineReducers(
     {
-      list: listReducer, // Наш редьюсер
       comments,
     },
   ),
+  applyMiddleware(middleware, sagaMiddleware), // Применение middleware
 );
 
-//  -----------------Код ниже демонстрационный, в нём нет необходимости
-store.dispatch({ // Отправляет action в reducer
-  type: 'START_DEMONSTRATION_ACTION',
-});
-console.log(store.getState()); // Получение стейта
-store.subscribe( // Подписка функции на изменения
-  () => console.log(store.getState()), // Функция, которая будет выполнятся при каждом изменении store
-);
-// store.replaceReducer() // Замена редьюсера
-//  -----------------Финал демонстрационного кода------------------------
+sagaMiddleware.run(commentsWatcher); // Подключение watcher к saga. Должно быть после подключения прослойки (applyMiddleware)
 
 export default store;

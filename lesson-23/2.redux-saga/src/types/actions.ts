@@ -11,4 +11,5 @@ export interface ListActionType extends Action{
 export interface CommentsAction extends Action{
   commentsList?: Array<CommentType>
   loading?: boolean
+  error?: string
 }

@@ -12,4 +12,5 @@ export interface ListState {
 export interface CommentsState {
   commentsList: Array<CommentType>
   loading: boolean
+  error?: string
 }

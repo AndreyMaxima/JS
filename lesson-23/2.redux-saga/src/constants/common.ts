@@ -1,2 +1,2 @@
-export const EMPTY_STING = '';
+export const EMPTY_STRING = '';
 export const EMPTY_FUNC = () => {};
