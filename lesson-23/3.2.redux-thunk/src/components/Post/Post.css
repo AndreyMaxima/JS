@@ -1,0 +1,9 @@
+.post {
+    width: 100%;
+    height: 100%;
+}
+
+.post__like {
+    text-align: right;
+    cursor: pointer;
+}
