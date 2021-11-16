@@ -3,20 +3,20 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { State } from '../types/state';
 import { CommentType } from '../types/api/dumMyApiResponses';
-import { loadAction } from '../actions/CommentsActions';
+import * as actions from '../actions/CommentsActions';
 
 interface Props {
   commentsList: Array<CommentType>
   loading: boolean;
-  load: () => void;
   error: any;
+  load: (pageNum: number, pageSize: number) => void;
 }
 
 const Comments = ({
-  commentsList, loading, load, error,
+  commentsList, loading, error, load,
 }: Props) => {
   useEffect(() => {
-    load();
+    load(0, 10);
   }, []);
   return (
     <div className="comments">
@@ -32,7 +32,5 @@ export default connect(
     loading: state.comments.loading,
     error: state.comments.error,
   }),
-  (dispatch) => ({
-    load: bindActionCreators(loadAction, dispatch),
-  }),
+  (dispatch) => bindActionCreators(actions, dispatch),
 )(Comments);
