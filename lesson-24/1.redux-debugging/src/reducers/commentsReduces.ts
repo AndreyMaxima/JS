@@ -25,7 +25,6 @@ const hideLoading = (draft: CommentsState) => {
 
 const loadSuccess = (draft: CommentsState, resp?: Array<CommentType>) => {
   draft.commentsList = resp || [];
-  draft.loading = false;
   return draft;
 };
 const loadError = (draft: CommentsState, e?: any) => {

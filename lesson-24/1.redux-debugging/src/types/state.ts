@@ -1,16 +1,17 @@
 import { CommentType } from './api/dumMyApiResponses';
 
 export interface State {
-  list: ListState;
   comments: CommentsState
-}
-
-export interface ListState {
-  records: Array<string>;
+  post: PostState
 }
 
 export interface CommentsState {
   commentsList: Array<CommentType>
   loading: boolean
   error?: string
+}
+
+export interface PostState {
+  text: string;
+  loading: boolean;
 }

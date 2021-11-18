@@ -1,0 +1,3 @@
+export const LOAD_POST_SUCCESS = 'POST/LOAD_SUCCESS';
+export const SHOW_LOADER = 'POST/SHOW_LOADER';
+export const HIDE_LOADER = 'POST/HIDE_LOADER';

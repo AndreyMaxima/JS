@@ -13,3 +13,7 @@ export interface CommentsAction extends Action{
   loading?: boolean
   error?: string
 }
+
+export interface PostAction extends Action {
+  text?: string;
+}
