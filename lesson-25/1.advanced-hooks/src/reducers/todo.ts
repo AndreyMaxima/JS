@@ -3,7 +3,7 @@ import { ToDoState } from '../types/state';
 import { TodoAction } from '../types/actions';
 import { ADD_TODO } from '../constants/actions/todo';
 
-const initialState: ToDoState = {
+export const initialState: ToDoState = {
   records: [
     {
       text: 'Купить слона',
@@ -29,7 +29,11 @@ const addTodo = (draft: ToDoState, text?: string) => {
   return draft;
 };
 
-export const todo = (state = initialState, action: TodoAction) => produce(state, (draft: ToDoState) => {
+const defaultState: ToDoState = {
+  records: [],
+};
+
+export const todo = (state = defaultState, action: TodoAction) => produce(state, (draft: ToDoState) => {
   switch (action.type) {
     case ADD_TODO: return addTodo(draft, action.record);
     default: return state;

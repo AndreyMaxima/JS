@@ -1,21 +1,25 @@
-import React, { useMemo, useState } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { State, ToDoRecord } from '../types/state';
-import * as actions from '../actions/todo';
-import { getTodoRecords } from '../selectors/state';
+import React, { useMemo, useReducer, useState } from 'react';
 import { ToDoFilter } from '../constants/components';
+import { addTodo } from '../actions/todo';
+import { initialState, todo } from '../reducers/todo';
 
-interface Props {
-  records: Array<ToDoRecord>
-  addTodo: (text: string) => void
-}
-
-const ToDo = ({ records, addTodo }: Props) => {
+const ToDo = () => {
   const [inputText, setInputText] = useState('');
   const [filter, setFilter] = useState(ToDoFilter.ALL);
+  const [state, dispatch] = useReducer( // Возвращает массив (индекс 0 - state, индекс 1 - dispatch)
+    todo, // Редьюсер, чей state и dispatch будет возвращён
+    initialState, // Изначальное значение state
+    (actualState) => ({ // В данную функцию будет передан initialState (второй параметр useReducer). Функция должна возвращать state, который будет назначен редьюсеру
+      ...actualState,
+      records: [...actualState.records, {
+        done: false,
+        text: 'Текст добавленный в useReducer',
+      }],
+    }),
+  );
+  const { records } = state;
   const handleAddTodo = () => {
-    addTodo(inputText);
+    dispatch(addTodo(inputText));
     setInputText('');
   };
 
@@ -23,9 +27,12 @@ const ToDo = ({ records, addTodo }: Props) => {
     () => { // Функция для выполнения
       console.log('record filter');
       switch (filter) {
-        case 'done': return records.filter((record) => record.done);
-        case 'not done': return records.filter((record) => !record.done);
-        default: return records;
+        case 'done':
+          return records.filter((record) => record.done);
+        case 'not done':
+          return records.filter((record) => !record.done);
+        default:
+          return records;
       }
     },
     [filter, records], // При изменеии значений, переданных в масиив функция, переданная выше, будет выполнена
@@ -49,9 +56,4 @@ const ToDo = ({ records, addTodo }: Props) => {
   );
 };
 
-export default connect(
-  (state: State) => ({
-    records: getTodoRecords(state),
-  }),
-  (dispatch) => bindActionCreators(actions, dispatch),
-)(ToDo);
+export default ToDo;
