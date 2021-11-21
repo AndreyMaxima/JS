@@ -16,7 +16,7 @@ const initialValidators: Record<string, Validator> = {
   },
 };
 
-const Registration = () => {
+const FormikRegistration = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -64,8 +64,8 @@ const Registration = () => {
   };
 
   return (
-    <div className="registration">
-      <h2>Регистрация</h2>
+    <div className="formik-registration">
+      <h2>Formik регистрация</h2>
       <form onSubmit={handleSubmit}>
         <div>
           Имя: <input
@@ -113,4 +113,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default FormikRegistration;
