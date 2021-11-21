@@ -1,114 +1,92 @@
-import React, { FormEvent, useState } from 'react';
-import { Validator } from '../types/validators';
+import React from 'react';
+import {
+  ErrorMessage, Field, Form, Formik,
+} from 'formik';
+import { isEmptyObject } from '../utils/common';
 
-const initialValidators: Record<string, Validator> = {
-  name: {
-    isError: true,
-  },
-  email: {
-    isError: true,
-  },
-  password: {
-    isError: true,
-  },
-  repeatedPassword: {
-    isError: true,
-  },
+interface FormValues {
+  name?: string,
+  email?: string,
+  password?: string,
+  passwordAgain?: string,
+}
+
+const initialFormValues: FormValues = {
+  name: 'Ольга',
+  email: 'any@ex.com',
+  password: '',
+  passwordAgain: '',
 };
 
 const FormikRegistration = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeatedPassword, setRepeatedPassword] = useState('');
-  const [validators, setValidators] = useState(initialValidators);
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    if (Object.keys(validators).every((key) => !validators[key].isError)) {
-      alert('Форма отправлена');
-    } else {
-      alert('Ошибка заполнения');
-    }
-    e.preventDefault();
+  const handleSubmit = (values: any) => {
+    console.log(values);
   };
 
-  const validate = (propName: string, isError: boolean, helperText: string) => {
-    setValidators({
-      ...validators,
-      [propName]: {
-        isError,
-        helperText: isError ? helperText : '',
-      },
-    });
-  };
+  const validateName = (nameValue: string) => (!/^[А-яёЁ]+$/.test(nameValue) ? 'Только кириллические символ' : '');
 
-  const validateName = (nameValue: string) => {
-    validate('name', !/^[А-яёЁ]+$/.test(nameValue), 'Только кириллические символ');
-  };
-
-  const validateEmail = (value: string) => {
-    validate('email', !/^[A-z0-9]+@[A-z0-9]+.[A-z]+$/.test(value), 'Неверный email');
-  };
+  const validateEmail = (value: string) => (!/^[A-z0-9]+@[A-z0-9]+.[A-z]+$/.test(value) ? 'Неверный email' : '');
 
   const validatePassword = (value: string) => {
     const helperText = [];
     if (value.length < 6) {
       helperText.push('Пароль дожен содержать не менее 6-и символов');
     }
-    const isError = !/^[A-z]+$/.test(value);
-    helperText.push(isError ? ' Содержит недопустимые символы' : '');
-    validate('password', isError, helperText.toString());
+    helperText.push(!/^[A-z]+$/.test(value) ? ' Содержит недопустимые символы' : '');
+    return helperText.toString();
   };
 
-  const validateRepeatedPassword = () => {
-    validate('repeatedPassword', !(password === repeatedPassword), 'пароли не совпадают');
-  };
+  const validateRepeatedPassword = (password: string, repeatedPassword: string) => (!(password === repeatedPassword) ? 'пароли не совпадают' : '');
 
   return (
     <div className="formik-registration">
       <h2>Formik регистрация</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          Имя: <input
-            name="name"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            onBlur={(e) => validateName(e.target.value)}
-          />
-          {validators.name.helperText}
-        </div>
-        <div>
-          E-mail: <input
-            name="email"
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            onBlur={(e) => validateEmail(e.target.value)}
-          />
-          {validators.email.helperText}
-        </div>
-        <div>
-          Пароль: <input
-            name="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            onBlur={(e) => validatePassword(e.target.value)}
-          />
-          {validators.password.helperText}
-        </div>
-        <div>
-          Повторите пароль: <input
-            name="repeatedPassword"
-            type="password"
-            value={repeatedPassword}
-            onChange={(e) => setRepeatedPassword(e.target.value)}
-            onBlur={validateRepeatedPassword}
-          />
-          {validators.repeatedPassword.helperText}
-        </div>
-        <button type="submit">Зарегистрироваться</button>
-      </form>
+      <Formik
+        initialValues={initialFormValues}
+        onSubmit={handleSubmit}
+        validate={(values: FormValues) => {
+          const errors: FormValues = {};
+          errors.name = validateName(values.name || '');
+          errors.email = validateEmail(values.email || '');
+          errors.password = validatePassword(values.password || '');
+          errors.passwordAgain = validateRepeatedPassword(values.password || '', values.passwordAgain || '');
+          return isEmptyObject(errors) ? {} : errors;
+        }}
+      >
+        {() => (
+          <Form>
+            <div>
+              Имя: <Field
+                name="name"
+                type="text"
+              />
+              <ErrorMessage name="name" />
+            </div>
+            <div>
+              E-mail: <Field
+                name="email"
+                type="text"
+              />
+              <ErrorMessage name="email" />
+            </div>
+            <div>
+              Пароль: <Field
+                name="password"
+                type="password"
+              />
+              <ErrorMessage name="password" />
+            </div>
+            <div>
+              Повторите пароль: <Field
+                name="passwordAgain"
+                type="password"
+              />
+              <ErrorMessage name="passwordAgain" />
+            </div>
+            <button type="submit">Зарегистрироваться</button>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };
