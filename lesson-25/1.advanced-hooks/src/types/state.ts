@@ -4,7 +4,6 @@ export interface State {
 
 export interface ToDoState {
   records: Array<ToDoRecord>;
-  filter: string
 }
 
 export interface ToDoRecord {

@@ -1,30 +1,42 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { State, ToDoRecord } from '../types/state';
 import * as actions from '../actions/todo';
-import { getFilterRecords } from '../selectors/todo';
+import { getTodoRecords } from '../selectors/state';
+import { ToDoFilter } from '../constants/components';
 
 interface Props {
   records: Array<ToDoRecord>
   addTodo: (text: string) => void
-  changeFilter: (filter: string) => void
 }
 
-const ToDo = ({ records, addTodo, changeFilter }: Props) => {
+const ToDo = ({ records, addTodo }: Props) => {
   const [inputText, setInputText] = useState('');
+  const [filter, setFilter] = useState(ToDoFilter.ALL);
   const handleAddTodo = () => {
     addTodo(inputText);
     setInputText('');
   };
 
+  const filteredCard = useMemo(
+    () => { // Функция для выполнения
+      console.log('record filter');
+      switch (filter) {
+        case 'done': return records.filter((record) => record.done);
+        case 'not done': return records.filter((record) => !record.done);
+        default: return records;
+      }
+    },
+    [filter, records], // При изменеии значений, переданных в масиив функция, переданная выше, будет выполнена
+  );
   return (
     <div className="todo-list">
-      <button type="button" onClick={() => changeFilter('all')}>Все</button>
-      <button type="button" onClick={() => changeFilter('not done')}>Невыполненные</button>
-      <button type="button" onClick={() => changeFilter('done')}>Выполненные</button>
+      <button type="button" onClick={() => setFilter(ToDoFilter.ALL)}>Все</button>
+      <button type="button" onClick={() => setFilter(ToDoFilter.NOT_DONE)}>Невыполненные</button>
+      <button type="button" onClick={() => setFilter(ToDoFilter.DONE)}>Выполненные</button>
       <ul>
-        {records.map((record, index) => (
+        {filteredCard.map((record, index) => (
           <li key={index}>
             {record.text}
             {record.done && ' - выполнено'}
@@ -39,7 +51,7 @@ const ToDo = ({ records, addTodo, changeFilter }: Props) => {
 
 export default connect(
   (state: State) => ({
-    records: getFilterRecords(state),
+    records: getTodoRecords(state),
   }),
   (dispatch) => bindActionCreators(actions, dispatch),
 )(ToDo);

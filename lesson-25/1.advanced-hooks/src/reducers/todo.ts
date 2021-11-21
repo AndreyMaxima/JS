@@ -1,7 +1,7 @@
 import produce from 'immer';
 import { ToDoState } from '../types/state';
 import { TodoAction } from '../types/actions';
-import { ADD_TODO, CHANGE_FILTER } from '../constants/actions/todo';
+import { ADD_TODO } from '../constants/actions/todo';
 
 const initialState: ToDoState = {
   records: [
@@ -22,7 +22,6 @@ const initialState: ToDoState = {
       done: true,
     },
   ],
-  filter: 'not done',
 };
 
 const addTodo = (draft: ToDoState, text?: string) => {
@@ -30,15 +29,9 @@ const addTodo = (draft: ToDoState, text?: string) => {
   return draft;
 };
 
-const changeFilter = (draft: ToDoState, filter?: string) => {
-  draft.filter = filter || 'not done';
-  return draft;
-};
-
 export const todo = (state = initialState, action: TodoAction) => produce(state, (draft: ToDoState) => {
   switch (action.type) {
     case ADD_TODO: return addTodo(draft, action.record);
-    case CHANGE_FILTER: return changeFilter(draft, action.filter);
     default: return state;
   }
 });
