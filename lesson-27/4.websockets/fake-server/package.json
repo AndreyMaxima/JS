@@ -1,0 +1,14 @@
+{
+  "name": "fake-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "fake-web-socket-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "fake-web-socket-server": "1.1.2"
+  }
+}
