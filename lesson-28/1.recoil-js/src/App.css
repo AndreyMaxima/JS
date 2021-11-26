@@ -1,0 +1,27 @@
+a {
+    color: inherit;
+}
+
+.App {
+    min-height: 100%;
+}
+
+.body {
+    display: flex;
+    padding: 10px;
+    height: 100%;
+}
+
+.sidebar-container {
+    width: 200px;
+}
+
+.content {
+    flex-grow: 1;
+    padding-left: 10px;
+}
+
+.app__dark {
+    background-color: darkgray;
+    color: white;
+}
