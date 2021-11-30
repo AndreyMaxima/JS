@@ -17,11 +17,7 @@ const App = () => {
   // eslint-disable-next-line no-restricted-globals,no-alert
   // @ts-ignore
   // eslint-disable-next-line no-alert
-  useEffect(() => setUserName(
-    // prompt(t('nameQuestion'))
-    'Andreas',
-  ),
-  []);
+  useEffect(() => setUserName(prompt(t('nameQuestion')), []));
 
   return (
     <div id="app">
@@ -34,15 +30,6 @@ const App = () => {
       </Trans>
       <div className="date-now">
         {t('date_format', { date: new Date() })}
-      </div>
-      <div>
-        {t('plurals.apple', { count: 0 })}
-      </div>
-      <div>
-        {t('plurals.apple', { count: 1 })}
-      </div>
-      <div>
-        {t('plurals.apple', { count: 2 })}
       </div>
       <div className="language-buttons">
         <button value="en" type="button" onClick={handleChangeLanguage}>EN</button>
