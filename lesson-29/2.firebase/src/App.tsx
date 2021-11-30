@@ -31,18 +31,6 @@ const App = () => {
       <div className="date-now">
         {t('date_format', { date: new Date() })}
       </div>
-      <div className="date-now">
-        {t('date_format', { date: new Date() })}
-      </div>
-      <div className="date-now">
-        {t('date_format', { date: new Date() })}
-      </div>
-      <div className="date-now">
-        {t('date_format', { date: new Date() })}
-      </div>
-      <div className="date-now">
-        {t('date_format', { date: new Date() })}
-      </div>
       <div className="language-buttons">
         <button value="en" type="button" onClick={handleChangeLanguage}>EN</button>
         <button value="ru" type="button" onClick={handleChangeLanguage}>RU</button>
