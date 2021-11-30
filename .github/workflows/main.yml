@@ -1,0 +1,45 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ deploy ]
+  pull_request:
+    branches: [ deploy ]
+    
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install deps
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Archive production artifact
+        uses: actions/upload-artifact@deploy
+        with: 
+          name: dist
+          path: dist
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@deploy
+      - name: Downloadct
+        uses: actions/downloadt@deploy
+        with: 
+          name: dist
+          path: dist
+      - name: Deploy
+        uses: w9jds/firebase-action@deploy
+        with:
+          args: deploy
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
