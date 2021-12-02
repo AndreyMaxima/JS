@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Client</title>
+</head>
+<body>
+    <input type="text" id="input" style="width: 100%">
+    <div>
+        <button type="button" id="get">GET</button>
+        <button type="button" id="post">POST</button>
+        <button type="button" id="put">PUT</button>
+        <button type="button" id="delete">DELETE</button>
+        <button type="patch" id="patch">PATCH</button>
+    </div>
+</body>
+<script>
+    const input = document.getElementById('input')
+    const sendRequest = (method) => {
+      fetch(input.value, {
+        method
+      })
+    }
+    const sendRequestWith = (method) => {
+      fetch(input.value, {
+        method,
+        body: JSON.stringify({
+          key: 'value',
+          other: 'key'
+        })
+      })
+    }
+    document.getElementById('get').addEventListener('click', () => sendRequest('get'))
+    document.getElementById('post').addEventListener('click', () => sendRequestWith('post'))
+    document.getElementById('put').addEventListener('click', () => sendRequest('put'))
+    document.getElementById('delete').addEventListener('click', () => sendRequest('delete'))
+    document.getElementById('patch').addEventListener('click', () => sendRequest('PATCH'))
+</script>
+</html>
