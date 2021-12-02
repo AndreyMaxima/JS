@@ -24,6 +24,9 @@
     const sendRequestWith = (method) => {
       fetch(input.value, {
         method,
+        headers: {
+          'content-type': 'application/json'
+        },
         body: JSON.stringify({
           key: 'value',
           other: 'key'
