@@ -12,3 +12,73 @@ Error: message
     at next (C:\Users\Maxima\IdeaProjects\JS-delta\lesson-31\1.debuging\node_modules\express\lib\router\index.js:275:10)
     at Function.handle (C:\Users\Maxima\IdeaProjects\JS-delta\lesson-31\1.debuging\node_modules\express\lib\router\index.js:174:3)
     at router (C:\Users\Maxima\IdeaProjects\JS-delta\lesson-31\1.debuging\node_modules\express\lib\router\index.js:47:12) 
+22:55:08.535 INFO  64e60a4e-fbaa-40b5-9759-8771a25d07c4 [UserService.getUserList] NO INPUT PARAMS 
+22:55:08.535 INFO  64e60a4e-fbaa-40b5-9759-8771a25d07c4 [UserRepository.getUserListThirdParty] invoke fakeApi.getUserListThirdParty 
+22:55:08.541 INFO  64e60a4e-fbaa-40b5-9759-8771a25d07c4 [UserRepository.getUserListThirdParty] reply [{"name":"Andreas","lastName":"Valent","type":1,"other":"filed"},{"name":"Second","lastName":"User","type":2,"other":"filed"},{"name":"Third","lastName":"User","type":1,"other":"filed"}] 
+22:55:08.542 INFO  64e60a4e-fbaa-40b5-9759-8771a25d07c4 [UserRepository.getUserListThirdParty] result [{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+22:55:08.542 INFO  64e60a4e-fbaa-40b5-9759-8771a25d07c4 [UserService.getUserList] success status=200 response=[{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+22:56:15.588 INFO  475f449c-7d45-4ece-9cd3-df2647281839 [UserService.getUserList] NO INPUT PARAMS 
+22:56:21.051 INFO  475f449c-7d45-4ece-9cd3-df2647281839 [UserRepository.getUserListThirdParty] invoke fakeApi.getUserListThirdParty 
+22:56:28.791 INFO  475f449c-7d45-4ece-9cd3-df2647281839 [UserRepository.getUserListThirdParty] reply [{"name":"Andreas","lastName":"Valent","type":1,"other":"filed"},{"name":"Second","lastName":"User","type":2,"other":"filed"},{"name":"Third","lastName":"User","type":1,"other":"filed"}] 
+22:56:35.849 INFO  475f449c-7d45-4ece-9cd3-df2647281839 [UserRepository.getUserListThirdParty] result [{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+22:56:37.648 INFO  475f449c-7d45-4ece-9cd3-df2647281839 [UserService.getUserList] success status=200 response=[{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:23:44.600 INFO  c4b23544-65d8-4006-8fc9-37b9810c5539 [UserService.getUserList] NO INPUT PARAMS 
+23:23:44.601 INFO  c4b23544-65d8-4006-8fc9-37b9810c5539 [UserRepository.getUserListThirdParty] invoke fakeApi.getUserListThirdParty 
+23:23:44.611 INFO  c4b23544-65d8-4006-8fc9-37b9810c5539 [UserRepository.getUserListThirdParty] reply [{"name":"Andreas","lastName":"Valent","type":1,"other":"filed"},{"name":"Second","lastName":"User","type":2,"other":"filed"},{"name":"Third","lastName":"User","type":1,"other":"filed"}] 
+23:23:44.612 INFO  c4b23544-65d8-4006-8fc9-37b9810c5539 [UserRepository.getUserListThirdParty] result [{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:23:44.613 INFO  c4b23544-65d8-4006-8fc9-37b9810c5539 [UserService.getUserList] success status=200 response=[{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:23:55.136 INFO  0a918b77-2b3a-4115-b592-0a83991ff37b [UserService.getUserList] NO INPUT PARAMS 
+23:23:55.136 INFO  0a918b77-2b3a-4115-b592-0a83991ff37b [UserRepository.getUserListThirdParty] invoke fakeApi.getUserListThirdParty 
+23:23:55.140 INFO  0a918b77-2b3a-4115-b592-0a83991ff37b [UserRepository.getUserListThirdParty] reply [{"name":"Andreas","lastName":"Valent","type":1,"other":"filed"},{"name":"Second","lastName":"User","type":2,"other":"filed"},{"name":"Third","lastName":"User","type":1,"other":"filed"}] 
+23:23:55.141 INFO  0a918b77-2b3a-4115-b592-0a83991ff37b [UserRepository.getUserListThirdParty] result [{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:23:55.141 INFO  0a918b77-2b3a-4115-b592-0a83991ff37b [UserService.getUserList] success status=200 response=[{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:23:55.920 INFO  74eda6d5-5c09-4908-aa2e-dcaff52159ea [UserService.getUserList] NO INPUT PARAMS 
+23:23:55.921 INFO  74eda6d5-5c09-4908-aa2e-dcaff52159ea [UserRepository.getUserListThirdParty] invoke fakeApi.getUserListThirdParty 
+23:23:55.925 INFO  74eda6d5-5c09-4908-aa2e-dcaff52159ea [UserRepository.getUserListThirdParty] reply [{"name":"Andreas","lastName":"Valent","type":1,"other":"filed"},{"name":"Second","lastName":"User","type":2,"other":"filed"},{"name":"Third","lastName":"User","type":1,"other":"filed"}] 
+23:23:55.925 INFO  74eda6d5-5c09-4908-aa2e-dcaff52159ea [UserRepository.getUserListThirdParty] result [{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:23:55.926 INFO  74eda6d5-5c09-4908-aa2e-dcaff52159ea [UserService.getUserList] success status=200 response=[{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:23:56.436 INFO  35e22ade-9c59-46f4-8877-736d94117669 [UserService.getUserList] NO INPUT PARAMS 
+23:23:56.437 INFO  35e22ade-9c59-46f4-8877-736d94117669 [UserRepository.getUserListThirdParty] invoke fakeApi.getUserListThirdParty 
+23:23:56.440 INFO  35e22ade-9c59-46f4-8877-736d94117669 [UserRepository.getUserListThirdParty] reply [{"name":"Andreas","lastName":"Valent","type":1,"other":"filed"},{"name":"Second","lastName":"User","type":2,"other":"filed"},{"name":"Third","lastName":"User","type":1,"other":"filed"}] 
+23:23:56.441 INFO  35e22ade-9c59-46f4-8877-736d94117669 [UserRepository.getUserListThirdParty] result [{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:23:56.441 INFO  35e22ade-9c59-46f4-8877-736d94117669 [UserService.getUserList] success status=200 response=[{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:23:56.827 INFO  0181bdd7-71b6-4ca1-bafc-765132e9ea82 [UserService.getUserList] NO INPUT PARAMS 
+23:23:56.828 INFO  0181bdd7-71b6-4ca1-bafc-765132e9ea82 [UserRepository.getUserListThirdParty] invoke fakeApi.getUserListThirdParty 
+23:23:56.832 INFO  0181bdd7-71b6-4ca1-bafc-765132e9ea82 [UserRepository.getUserListThirdParty] reply [{"name":"Andreas","lastName":"Valent","type":1,"other":"filed"},{"name":"Second","lastName":"User","type":2,"other":"filed"},{"name":"Third","lastName":"User","type":1,"other":"filed"}] 
+23:23:56.833 INFO  0181bdd7-71b6-4ca1-bafc-765132e9ea82 [UserRepository.getUserListThirdParty] result [{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:23:56.833 INFO  0181bdd7-71b6-4ca1-bafc-765132e9ea82 [UserService.getUserList] success status=200 response=[{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:23:57.184 INFO  94b85455-7055-467f-b79a-ee81adb7f847 [UserService.getUserList] NO INPUT PARAMS 
+23:23:57.185 INFO  94b85455-7055-467f-b79a-ee81adb7f847 [UserRepository.getUserListThirdParty] invoke fakeApi.getUserListThirdParty 
+23:23:57.188 INFO  94b85455-7055-467f-b79a-ee81adb7f847 [UserRepository.getUserListThirdParty] reply [{"name":"Andreas","lastName":"Valent","type":1,"other":"filed"},{"name":"Second","lastName":"User","type":2,"other":"filed"},{"name":"Third","lastName":"User","type":1,"other":"filed"}] 
+23:23:57.188 INFO  94b85455-7055-467f-b79a-ee81adb7f847 [UserRepository.getUserListThirdParty] result [{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:23:57.189 INFO  94b85455-7055-467f-b79a-ee81adb7f847 [UserService.getUserList] success status=200 response=[{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:23:57.587 INFO  017d7b6f-7008-46e2-acc2-b1f64e2902ba [UserService.getUserList] NO INPUT PARAMS 
+23:23:57.588 INFO  017d7b6f-7008-46e2-acc2-b1f64e2902ba [UserRepository.getUserListThirdParty] invoke fakeApi.getUserListThirdParty 
+23:23:57.593 INFO  017d7b6f-7008-46e2-acc2-b1f64e2902ba [UserRepository.getUserListThirdParty] reply [{"name":"Andreas","lastName":"Valent","type":1,"other":"filed"},{"name":"Second","lastName":"User","type":2,"other":"filed"},{"name":"Third","lastName":"User","type":1,"other":"filed"}] 
+23:23:57.593 INFO  017d7b6f-7008-46e2-acc2-b1f64e2902ba [UserRepository.getUserListThirdParty] result [{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:23:57.593 INFO  017d7b6f-7008-46e2-acc2-b1f64e2902ba [UserService.getUserList] success status=200 response=[{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:23:57.997 INFO  611d9928-cf34-43a6-97fb-3548de850db9 [UserService.getUserList] NO INPUT PARAMS 
+23:23:57.998 INFO  611d9928-cf34-43a6-97fb-3548de850db9 [UserRepository.getUserListThirdParty] invoke fakeApi.getUserListThirdParty 
+23:23:58.002 INFO  611d9928-cf34-43a6-97fb-3548de850db9 [UserRepository.getUserListThirdParty] reply [{"name":"Andreas","lastName":"Valent","type":1,"other":"filed"},{"name":"Second","lastName":"User","type":2,"other":"filed"},{"name":"Third","lastName":"User","type":1,"other":"filed"}] 
+23:23:58.003 INFO  611d9928-cf34-43a6-97fb-3548de850db9 [UserRepository.getUserListThirdParty] result [{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:23:58.003 INFO  611d9928-cf34-43a6-97fb-3548de850db9 [UserService.getUserList] success status=200 response=[{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:24:03.281 INFO  487ccd93-c87f-47ed-b71d-cc5c448ab088 [UserService.getUserList] NO INPUT PARAMS 
+23:24:03.282 INFO  487ccd93-c87f-47ed-b71d-cc5c448ab088 [UserRepository.getUserListThirdParty] invoke fakeApi.getUserListThirdParty 
+23:24:03.286 INFO  487ccd93-c87f-47ed-b71d-cc5c448ab088 [UserRepository.getUserListThirdParty] reply [{"name":"Andreas","lastName":"Valent","type":1,"other":"filed"},{"name":"Second","lastName":"User","type":2,"other":"filed"},{"name":"Third","lastName":"User","type":1,"other":"filed"}] 
+23:24:03.286 INFO  487ccd93-c87f-47ed-b71d-cc5c448ab088 [UserRepository.getUserListThirdParty] result [{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:24:03.287 INFO  487ccd93-c87f-47ed-b71d-cc5c448ab088 [UserService.getUserList] success status=200 response=[{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:32:00.396 INFO  988579ee-e4bd-420b-8f7d-2d3154009ed6 [UserService.getUserList] NO INPUT PARAMS 
+23:32:01.729 INFO  988579ee-e4bd-420b-8f7d-2d3154009ed6 [UserRepository.getUserListThirdParty] invoke fakeApi.getUserListThirdParty 
+23:32:06.116 INFO  988579ee-e4bd-420b-8f7d-2d3154009ed6 [UserRepository.getUserListThirdParty] reply [{"name":"Andreas","lastName":"Valent","type":1,"other":"filed"},{"name":"Second","lastName":"User","type":2,"other":"filed"},{"name":"Third","lastName":"User","type":1,"other":"filed"}] 
+23:32:12.586 INFO  988579ee-e4bd-420b-8f7d-2d3154009ed6 [UserRepository.getUserListThirdParty] result [{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:32:15.022 INFO  988579ee-e4bd-420b-8f7d-2d3154009ed6 [UserService.getUserList] success status=200 response=[{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:34:28.606 INFO  3087038b-0461-4908-bfe3-c592d7561766 [UserService.createUser] INPUT PARAMS body={} 
+23:34:28.607 INFO  3087038b-0461-4908-bfe3-c592d7561766 [UserActions.createUser] invoke fakeApi.fakeCreateUser name=undefined lastName=undefined 
+23:34:28.611 INFO  3087038b-0461-4908-bfe3-c592d7561766 [UserActions.createUser] success {"status":"error"} 
+23:34:29.134 INFO  3087038b-0461-4908-bfe3-c592d7561766 [UserService.createUser] fail status=520 response={"status":"error"} 
+23:39:01.602 INFO  6f8e50a4-8df3-49a0-8455-5ffef2d21099 [UserService.getUserList] NO INPUT PARAMS 
+23:39:01.603 INFO  6f8e50a4-8df3-49a0-8455-5ffef2d21099 [UserRepository.getUserListThirdParty] invoke fakeApi.getUserListThirdParty 
+23:39:01.608 INFO  6f8e50a4-8df3-49a0-8455-5ffef2d21099 [UserRepository.getUserListThirdParty] reply [{"name":"Andreas","lastName":"Valent","type":1,"other":"filed"},{"name":"Second","lastName":"User","type":2,"other":"filed"},{"name":"Third","lastName":"User","type":1,"other":"filed"}] 
+23:39:01.609 INFO  6f8e50a4-8df3-49a0-8455-5ffef2d21099 [UserRepository.getUserListThirdParty] result [{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:39:59.278 INFO  6f8e50a4-8df3-49a0-8455-5ffef2d21099 [UserService.getUserList] success status=200 response=[{"fullname":"Andreas Valent","role":"ADMIN"},{"fullname":"Second User","role":"MODER"},{"fullname":"Third User","role":"ADMIN"}] 
+23:39:59.280 INFO  6f8e50a4-8df3-49a0-8455-5ffef2d21099 [UserService.getUserList] error status=520 response=Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client 
