@@ -21,6 +21,22 @@ module.exports = {
           other: 'filed'
         },
       ]))
+      // rej({status: 'neok', desc:'none'})
+    }
+  ),
+  fakeCreateUser: (name, lastName) => new Promise(
+    (res, rej) => {
+      // res(JSON.stringify({
+      //   status: 'ok',
+      //   name,
+      //   lastName
+      // }))
+      // rej(JSON.stringify({
+      //   desc: 'UNCORRECT_DATA'
+      // }))
+      res(JSON.stringify({
+        status: 'error'
+      }))
     }
   )
 }
