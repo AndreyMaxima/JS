@@ -20,4 +20,10 @@ app.use((req, res, next) => {
 
 app.use('/api', router)
 
+app.use((err, req, res, next) => {
+  console.log(err)
+  logger.fatal(err)
+  res.status(500).send(err.toString())
+  next()
+})
 app.listen(port, host, () => console.log('App started'))

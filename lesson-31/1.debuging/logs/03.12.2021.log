@@ -1,0 +1,14 @@
+22:43:53.349 INFO  e6ef9060-47a4-47d8-942d-fd8a0097c000 [UserService.getUserList] NO INPUT PARAMS 
+22:43:53.351 FATAL e6ef9060-47a4-47d8-942d-fd8a0097c000 message
+{}
+Error: message
+    at getUserList (C:\Users\Maxima\IdeaProjects\JS-delta\lesson-31\1.debuging\src\services\userService.js:10:11)
+    at Layer.handle [as handle_request] (C:\Users\Maxima\IdeaProjects\JS-delta\lesson-31\1.debuging\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Maxima\IdeaProjects\JS-delta\lesson-31\1.debuging\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\Maxima\IdeaProjects\JS-delta\lesson-31\1.debuging\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\Users\Maxima\IdeaProjects\JS-delta\lesson-31\1.debuging\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Maxima\IdeaProjects\JS-delta\lesson-31\1.debuging\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (C:\Users\Maxima\IdeaProjects\JS-delta\lesson-31\1.debuging\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\Users\Maxima\IdeaProjects\JS-delta\lesson-31\1.debuging\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (C:\Users\Maxima\IdeaProjects\JS-delta\lesson-31\1.debuging\node_modules\express\lib\router\index.js:174:3)
+    at router (C:\Users\Maxima\IdeaProjects\JS-delta\lesson-31\1.debuging\node_modules\express\lib\router\index.js:47:12) 
