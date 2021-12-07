@@ -1,0 +1,1 @@
+require('./server')('./config.json')

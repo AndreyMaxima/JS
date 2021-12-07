@@ -1,0 +1,116 @@
+{
+  "host": "127.0.0.1",
+  "port": "3000",
+  "routes": [
+    {
+      "path": "/api",
+      "method": "get",
+      "data": {
+        "status": "ok",
+        "message": "test message"
+      }
+    },
+    {
+      "path": "/api/getUsers",
+      "method": "GET",
+      "pagination": {
+        "type": "query",
+        "pageName": "page",
+        "limitName": "limit"
+      },
+      "data": [
+        {
+          "firstName": "Andreas",
+          "lastName": "Valent"
+        },
+        {
+          "firstName": "Oleg",
+          "lastName": "Sizov"
+        },
+        {
+          "firstName": "Valery",
+          "lastName": "Dmitry"
+        },
+        {
+          "firstName": "Angela",
+          "lastName": "Charley"
+        },
+        {
+          "firstName": "Andreas2",
+          "lastName": "Valent"
+        },
+        {
+          "firstName": "Oleg2",
+          "lastName": "Sizov"
+        },
+        {
+          "firstName": "Valery2",
+          "lastName": "Dmitry"
+        },
+        {
+          "firstName": "Angela2",
+          "lastName": "Charley"
+        }
+      ]
+    },
+    {
+      "path": "/api/user/:id",
+      "method": "GET",
+      "pagination": {
+        "type": "params",
+        "paramName": "id",
+        "fieldName": "id"
+      },
+      "data": [
+        {
+          "id": "1",
+          "firstName": "Andreas",
+          "lastName": "Valent"
+        },
+        {
+          "id": "2",
+          "firstName": "Oleg",
+          "lastName": "Sizov"
+        },
+        {
+          "id": "3",
+          "firstName": "Valery",
+          "lastName": "Dmitry"
+        },
+        {
+          "id": "4",
+          "firstName": "Angela",
+          "lastName": "Charley"
+        },
+        {
+          "id": "5",
+          "firstName": "Andreas2",
+          "lastName": "Valent"
+        },
+        {
+          "id": "6",
+          "firstName": "Oleg2",
+          "lastName": "Sizov"
+        },
+        {
+          "id": "7",
+          "firstName": "Valery2",
+          "lastName": "Dmitry"
+        },
+        {
+          "id": "8",
+          "firstName": "Angela2",
+          "lastName": "Charley"
+        }
+      ]
+    },
+    {
+      "path": "/api/post",
+      "method": "POST",
+      "data": {
+        "status": "ok",
+        "desc": "all right"
+      }
+    }
+  ]
+}
