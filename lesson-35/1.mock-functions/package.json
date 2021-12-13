@@ -1,0 +1,14 @@
+{
+  "name": "1.mock-functions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "asyncUtils.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.4.4"
+  }
+}
