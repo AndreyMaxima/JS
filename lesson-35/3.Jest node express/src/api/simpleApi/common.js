@@ -1,4 +1,4 @@
-const {APP_ID_FIELD, APP_ID_VALUE, BASE_URL,} = require('../../constants/api/dummyApi');
+const {APP_ID_FIELD, APP_ID_VALUE, BASE_URL,} = require('../../constants/api/simpleapi');
 const {METHOD_GET} = require('../../constants/api/common');
 const fetch = require('node-fetch')
 
@@ -10,11 +10,10 @@ const doGetRequest = (path, searchParams) => {
     });
   return fetch(url.toString(), {
     method: METHOD_GET,
-    headers: new Headers({
+    headers: {
       [APP_ID_FIELD]: APP_ID_VALUE,
-    }),
-  })
-    .then((resp) => resp.json())
+    },
+  }).then((resp) => resp.json())
     .then((resp) => resp.data);
 };
 

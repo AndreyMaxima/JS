@@ -20,5 +20,10 @@
   },
   "devDependencies": {
     "jest": "^27.4.4"
+  },
+  "jest": {
+    "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.jsx?$",
+    "collectCoverage": true,
+    "collectCoverageFrom": ["**/**/*.js"]
   }
 }

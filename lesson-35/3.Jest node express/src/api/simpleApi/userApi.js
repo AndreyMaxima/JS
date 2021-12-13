@@ -1,4 +1,4 @@
-const {USER_URL, PAGE_FIELD, LIMIT_FIELD} = require("../../constants/api/dummyApi");
+const {USER_URL, PAGE_FIELD, LIMIT_FIELD} = require("../../constants/api/simpleapi");
 const {createGetWithPagination} = require("./common");
 module.exports = {
   getUserList: createGetWithPagination(USER_URL, PAGE_FIELD, LIMIT_FIELD),
