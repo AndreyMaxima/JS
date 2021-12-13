@@ -1,0 +1,24 @@
+{
+  "name": "3.-app-structure",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/server",
+    "debug": "node --inspect src/server",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-fetch": "2.6.6",
+    "request-context": "^2.0.0",
+    "simple-node-logger": "^21.8.12",
+    "string-format": "^2.0.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "jest": "^27.4.4"
+  }
+}
