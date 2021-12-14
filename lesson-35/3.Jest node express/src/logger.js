@@ -1,7 +1,12 @@
 const context = require('request-context')
+const fs = require('fs')
+
+const logDir = `${__dirname}/logs`
+
+!fs.existsSync(logDir) && fs.mkdirSync(logDir)
 
 const options = {
-  logDirectory:'./logs', // Директория для хранения логгов (должна существовать)
+  logDirectory:logDir, // Директория для хранения логгов (должна существовать)
   fileNamePattern: '<DATE>.log', // Паттерн файла логов
   dateFormat: 'DD.MM.YYYY' // Формат даты
 }

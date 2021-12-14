@@ -1,4 +1,4 @@
-const FakeApi = require('../api/dummyApi/userApi')
+const FakeApi = require('../api/simpleApi/userApi')
 const logger = require('../logger')
 const format = require('string-format')
 const { userActions: messages } = require('../constants/loggerMessages')
@@ -6,7 +6,7 @@ const { userActions: messages } = require('../constants/loggerMessages')
 class UsersActions {
   createUser(name, lastName) {
     logger.info(format(messages.CREATE_USER_INVOKE, name, lastName))
-    return FakeApi.fakeCreateUser(name, lastName)
+    return FakeApi.createUser(name, lastName)
       .then(apiResp => {
         logger.info(format(messages.CREATE_USER_REPLY_SUCCESS, apiResp))
         return apiResp

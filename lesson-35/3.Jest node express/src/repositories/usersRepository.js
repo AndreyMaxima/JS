@@ -8,13 +8,21 @@ class UsersRepository {
   getUserListThirdParty() {
     logger.info(messages.GET_USER_LIST_THIRD_PARTY_INVOKE)
     return userApi.getUserList()
-       .then(apiResp => {
-         logger.info(format(messages.GET_USER_LIST_THIRD_PARTY_REPLY_SUCCESS, apiResp))
-         const result = UserMapper.mapThirdPartyUsersToUsers(JSON.parse(apiResp))
-         logger.info(format(messages.GET_USER_LIST_THIRD_PARTY_REPLY_RESULT, JSON.stringify(result)))
-         return result
+       .then(json => {
+         const apiResp = JSON.parse(json)
+         if(apiResp.error) {
+           logger.error(format(messages.GET_USER_LIST_THIRD_PARTY_REPLY_ERROR, apiResp.error))
+           return Promise.reject(apiResp.error)
+         } else if (apiResp.data) {
+           logger.info(format(messages.GET_USER_LIST_THIRD_PARTY_REPLY_SUCCESS, apiResp.data))
+           const result = UserMapper.mapThirdPartyUsersToUsers(apiResp.data)
+           logger.info(format(messages.GET_USER_LIST_THIRD_PARTY_REPLY_RESULT, JSON.stringify(result)))
+           return result
+         } else {
+           logger.error(messages.GET_USER_LIST_THIRD_PARTY_EMPTY_RESULT)
+         }
        }).catch(error => {
-         logger.error(format(messages.GET_USER_LIST_THIRD_PARTY_REPLY_ERROR, JSON.stringify(error)))
+         logger.error(format(messages.GET_USER_LIST_THIRD_PARTY_REPLY_FAIL, JSON.stringify(error)))
          return Promise.reject(error)
       })
   }

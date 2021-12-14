@@ -13,7 +13,9 @@ module.exports = {
     GET_USER_LIST_THIRD_PARTY_INVOKE: '[UserRepository.getUserListThirdParty] invoke fakeApi.getUserListThirdParty',
     GET_USER_LIST_THIRD_PARTY_REPLY_SUCCESS: '[UserRepository.getUserListThirdParty] reply {}',
     GET_USER_LIST_THIRD_PARTY_REPLY_ERROR: '[UserRepository.getUserListThirdParty] error {}',
+    GET_USER_LIST_THIRD_PARTY_REPLY_FAIL: '[UserRepository.getUserListThirdParty] failed to fetch {}',
     GET_USER_LIST_THIRD_PARTY_REPLY_RESULT: '[UserRepository.getUserListThirdParty] result {}',
+    GET_USER_LIST_THIRD_PARTY_EMPTY_RESULT: '[UserRepository.getUserListThirdParty] error. Returned empty result',
   },
   userActions: {
     CREATE_USER_INVOKE: '[UserActions.createUser] invoke fakeApi.fakeCreateUser name={} lastName={}',

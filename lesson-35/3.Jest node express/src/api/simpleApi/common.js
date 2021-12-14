@@ -14,7 +14,6 @@ const doGetRequest = (path, searchParams) => {
       [APP_ID_FIELD]: APP_ID_VALUE,
     },
   }).then((resp) => resp.json())
-    .then((resp) => resp.data);
 };
 
 const createGetWithPagination = (endpointUrl, pageParam, limitParam) => (page, limit) => doGetRequest(

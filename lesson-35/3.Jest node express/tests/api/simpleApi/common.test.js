@@ -6,13 +6,13 @@ jest.mock('node-fetch', () => jest.fn(() => Promise.resolve({
   })
 })))
 
-describe('createGetWithPagination', () => {
+describe('common', () => {
 
-  test('should return function', () => {
+  test('createGetWithPagination: should return function', () => {
     expect(createGetWithPagination()).toEqual(expect.any(Function))
   })
 
-  test('should call fetch with search params, get method and app-id header', () => {
+  test('createGetWithPagination: should call fetch with search params, get method and app-id header', () => {
     const endpoint = 'endpoint'
     const pageParam = 'page'
     const limitParam = 'limit'
@@ -24,7 +24,7 @@ describe('createGetWithPagination', () => {
       {"headers": {"app-id": "617b11efbdaa719034cf6d83"}, "method": "GET"})
   })
 
-  test('should return promise with response.data', () => {
+  test('createGetWithPagination: should return promise with response.data', () => {
     const result = createGetWithPagination('endpoint', 'page, limit')(1, 10)
     expect(result).toEqual(expect.any(Promise))
     expect(result).resolves.toEqual('api response')

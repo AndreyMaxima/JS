@@ -25,13 +25,8 @@ class UserService {
       .then(json => JSON.parse(json))
       .then(response => {
         const result = JSON.stringify(response)
-        if(response.status !== 'ok') {
-          logger.info(format(messages.CREATE_USER_FAIL, 520, result))
-          res.status(520).send('user didn`t create')
-        } else {
           logger.info(format(messages.CREATE_USER_SUCCESS, 200, result))
           res.status(200).send(result)
-        }
       })
       .catch(error => {
         logger.info(format(messages.CREATE_USER_ERROR, 520, error))

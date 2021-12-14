@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(context.middleware('request'))
 app.use((req, res, next) => {
   context.set('uuid', generateUUID())
-  res.type('text/json')
+  res.type('application/json')
     .set('Access-Control-Allow-Origin', '*')
     .set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS')
     .set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
@@ -26,4 +26,5 @@ app.use((err, req, res, next) => {
   res.status(500).send(err.toString())
   next()
 })
-app.listen(port, host, () => console.log('App started'))
+
+module.exports = app
