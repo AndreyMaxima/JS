@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comment snapshot test should handle like 1`] = `
+<div
+  className="comment"
+>
+  <div
+    className="comment_avatar"
+  >
+    <img
+      alt="avatar"
+    />
+  </div>
+  <div
+    className="comment_content"
+  >
+    <div
+      className="comment_user-name"
+    >
+       
+    </div>
+    <div
+      className="comment_message"
+    />
+  </div>
+  <div
+    className="comment_like"
+    onClick={[Function]}
+  >
+    лайкнуто
+  </div>
+</div>
+`;
+
+exports[`Comment snapshot test should handle like 2`] = `
+<div
+  className="comment"
+>
+  <div
+    className="comment_avatar"
+  >
+    <img
+      alt="avatar"
+    />
+  </div>
+  <div
+    className="comment_content"
+  >
+    <div
+      className="comment_user-name"
+    >
+       
+    </div>
+    <div
+      className="comment_message"
+    />
+  </div>
+  <div
+    className="comment_like"
+    onClick={[Function]}
+  >
+    не лайкнуто
+  </div>
+</div>
+`;
+
+exports[`Comment snapshot test should render empty comment 1`] = `
+<div
+  className="comment"
+>
+  <div
+    className="comment_avatar"
+  >
+    <img
+      alt="avatar"
+    />
+  </div>
+  <div
+    className="comment_content"
+  >
+    <div
+      className="comment_user-name"
+    >
+       
+    </div>
+    <div
+      className="comment_message"
+    />
+  </div>
+  <div
+    className="comment_like"
+    onClick={[Function]}
+  >
+    не лайкнуто
+  </div>
+</div>
+`;
