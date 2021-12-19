@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    Login:<input type="text" id="login-input">
+    Password:<input type="text" id="password-input">
+    <button type="button" id="sign-up-button">Sign Up</button>
+    <button type="button" id="login-button">Login</button>
+</body>
+<script>
+    const loginInput = document.getElementById('login-input')
+    const passwordInput = document.getElementById('password-input')
+    const handleRegistration = () => {
+      fetch('http://localhost:5000/registration', {
+        method: 'POST',
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify({
+          login: loginInput.value,
+          password: passwordInput.value
+        })
+      })
+    }
+    const handleLogin = () => {
+      fetch('http://localhost:5000/login', {
+        method: 'POST',
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify({
+          login: loginInput.value,
+          password: passwordInput.value
+        })
+      })
+    }
+    document.getElementById('sign-up-button').addEventListener('click', handleRegistration)
+    document.getElementById('login-button').addEventListener('click', handleLogin)
+</script>
+</html>
