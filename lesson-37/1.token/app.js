@@ -6,7 +6,8 @@ const jwt = require('jsonwebtoken')
 const {MONGOOSE_URI} = require('./config/mongoose')
 const User = require('./models/userModel')
 const {JWT_SECRET} = require('./config/jwt')
-
+const passport = require('passport')
+const passportMiddleware = require('./middleware/passport')
 
 mongoose.connect(MONGOOSE_URI)
   .then(() => console.log('DB CONNECTED'))
@@ -15,6 +16,8 @@ mongoose.connect(MONGOOSE_URI)
 const app = express()
 app.use(cors())
 app.use(express.json())
+app.use(passport.initialize())
+passportMiddleware(passport)
 
 app.post('/login', async (req, res) => {
   const {login, password} = req.body
@@ -23,10 +26,10 @@ app.post('/login', async (req, res) => {
     if(user) {
       if(bcrypt.compareSync(password, user.password)) {
         res.status(200)
-          .json({token: jwt.sign({
+          .json({token: `Bearer ${jwt.sign({
               login: user.login
               }, JWT_SECRET
-            )})
+            )}`})
       } else {
         res.status(401).json({message: 'invalid password'})
       }
@@ -72,7 +75,7 @@ app.get('/getUserById/:id', async (req, res) => {
   }
 })
 
-app.get('/getUserList', async (req, res) => {
+app.get('/getUserList', passport.authorize('jwt', {session: false}), async (req, res) => {
   const { start, limit } = req.query
   try {
     const users = await User.find().skip(Number(start)).limit(Number(limit))

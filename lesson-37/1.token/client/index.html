@@ -9,6 +9,7 @@
     Password:<input type="text" id="password-input">
     <button type="button" id="sign-up-button">Sign Up</button>
     <button type="button" id="login-button">Login</button>
+    <button type="button" id="get-secure-endpoint-button">Get secure</button>
 </body>
 <script>
     const loginInput = document.getElementById('login-input')
@@ -35,9 +36,18 @@
           login: loginInput.value,
           password: passwordInput.value
         })
+      }).then(resp => resp.json()).then(json => localStorage.setItem('token', json.token))
+    }
+    const handleGetSecureEndpoint = () => {
+      fetch('http://localhost:5000/getUserList?start=1&limit=1', {
+        headers: new Headers({
+            'Authorization': localStorage.getItem('token')
+          }
+        )
       })
     }
     document.getElementById('sign-up-button').addEventListener('click', handleRegistration)
     document.getElementById('login-button').addEventListener('click', handleLogin)
+    document.getElementById('get-secure-endpoint-button').addEventListener('click', handleGetSecureEndpoint)
 </script>
 </html>
