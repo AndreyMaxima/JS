@@ -1,0 +1,16 @@
+.sidebar {
+    width: 100%;
+    min-height: 400px;
+    text-align: left;
+    background-color: lightblue;
+    padding: 3px;
+}
+
+.sidebar_dark {
+    color: white;
+    background-color: darkslategrey;
+}
+
+.biba {
+    color: red;
+}
